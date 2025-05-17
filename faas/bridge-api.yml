@@ -1,0 +1,17 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  bridge-api:
+    lang: python3
+    handler: ./faas/bridge-api
+    image: bridge-api:latest
+    environment:
+      write_timeout: 30s
+      read_timeout: 30s
+      KAFKA_BROKERS: "kafka:9092"
+      PIPELINE_TOPIC: "pipelines"
+  crawler:
+    lang: python3
+    handler: ./faas/crawler
+    image: data-crawler:latest
