@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Deploy an Amazon EMR 6.x cluster with Delta Lake enabled
+Parameters:
+  ClusterName:
+    Type: String
+  EMRReleaseLabel:
+    Type: String
+    Default: emr-6.10.0
+  Ec2SubnetId:
+    Type: AWS::EC2::Subnet::Id
+  JobFlowRole:
+    Type: String
+    Description: IAM role for EMR EC2 instances
+  ServiceRole:
+    Type: String
+    Description: IAM role for EMR service
+Resources:
+  EMRCluster:
+    Type: AWS::EMR::Cluster
+    Properties:
+      Name: !Ref ClusterName
+      ReleaseLabel: !Ref EMRReleaseLabel
+      Applications:
+        - Name: Spark
+      Instances:
+        Ec2SubnetId: !Ref Ec2SubnetId
+        MasterInstanceGroup:
+          InstanceCount: 1
+          InstanceType: m5.xlarge
+        CoreInstanceGroup:
+          InstanceCount: 2
+          InstanceType: m5.xlarge
+      Configurations:
+        - Classification: spark-defaults
+          ConfigurationProperties:
+            spark.sql.extensions: io.delta.sql.DeltaSparkSessionExtension
+            spark.sql.catalog.spark_catalog: org.apache.spark.sql.delta.catalog.DeltaCatalog
+      JobFlowRole: !Ref JobFlowRole
+      ServiceRole: !Ref ServiceRole
+Outputs:
+  ClusterId:
+    Value: !Ref EMRCluster
