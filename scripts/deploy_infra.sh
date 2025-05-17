@@ -12,8 +12,8 @@ ROOT_DIR="$SCRIPT_DIR/.."
 # Expected to define CFN_PACKAGE_BUCKET for packaging nested templates
 source "$ROOT_DIR/config.env"
 
-TEMPLATE="$ROOT_DIR/cloudformation/eks-environment.yml"
-PACKAGED_TEMPLATE="$ROOT_DIR/cloudformation/eks-environment-packaged.yml"
+TEMPLATE="$ROOT_DIR/iac/cloudformation/eks-environment.yml"
+PACKAGED_TEMPLATE="$ROOT_DIR/iac/cloudformation/eks-environment-packaged.yml"
 
 aws cloudformation package \
   --template-file "$TEMPLATE" \

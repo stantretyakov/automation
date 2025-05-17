@@ -4,7 +4,7 @@ This directory contains infrastructure templates used to deploy the platform.
 
 ## EMR Cluster with Delta Lake
 
-The `cloudformation/emr-cluster.yml` template provisions an Amazon EMR 6.x
+The `iac/cloudformation/emr-cluster.yml` template provisions an Amazon EMR 6.x
 cluster preconfigured for Delta Lake. Refer to the [AWS documentation](https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/emr-serverless-delta.html) for details on using Delta Lake on EMR.
 
 ### Deploying with AWS CLI
