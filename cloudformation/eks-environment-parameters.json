@@ -1,0 +1,66 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "dev"
+  },
+  {
+    "ParameterKey": "VpcCidr",
+    "ParameterValue": "10.10.0.0/16"
+  },
+  {
+    "ParameterKey": "PublicSubnet1Cidr",
+    "ParameterValue": "10.10.1.0/24"
+  },
+  {
+    "ParameterKey": "PublicSubnet2Cidr",
+    "ParameterValue": "10.10.2.0/24"
+  },
+  {
+    "ParameterKey": "PrivateSubnet1Cidr",
+    "ParameterValue": "10.10.3.0/24"
+  },
+  {
+    "ParameterKey": "PrivateSubnet2Cidr",
+    "ParameterValue": "10.10.4.0/24"
+  },
+  {
+    "ParameterKey": "ClusterName",
+    "ParameterValue": "dev-eks"
+  },
+  {
+    "ParameterKey": "NodeInstanceType",
+    "ParameterValue": "t3.medium"
+  },
+  {
+    "ParameterKey": "NodeGroupDesiredSize",
+    "ParameterValue": "2"
+  },
+  {
+    "ParameterKey": "NodeGroupMaxSize",
+    "ParameterValue": "3"
+  },
+  {
+    "ParameterKey": "NodeGroupMinSize",
+    "ParameterValue": "1"
+  },
+  {
+    "ParameterKey": "S3BucketName",
+    "ParameterValue": "dev-platform-bucket"
+  },
+  {
+    "ParameterKey": "DBName",
+    "ParameterValue": "platform"
+  },
+  {
+    "ParameterKey": "DBUser",
+    "ParameterValue": "platform"
+  },
+  {
+    "ParameterKey": "DBPassword",
+    "ParameterValue": "ChangeMe123!"
+  },
+  {
+    "ParameterKey": "DBPort",
+    "ParameterValue": "5432"
+  }
+]
