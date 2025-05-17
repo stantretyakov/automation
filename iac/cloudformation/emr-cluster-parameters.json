@@ -1,0 +1,7 @@
+[
+  {"ParameterKey": "ClusterName", "ParameterValue": "demo-emr"},
+  {"ParameterKey": "EMRReleaseLabel", "ParameterValue": "emr-6.10.0"},
+  {"ParameterKey": "Ec2SubnetId", "ParameterValue": "subnet-xxxxxxxx"},
+  {"ParameterKey": "JobFlowRole", "ParameterValue": "EMR_EC2_DefaultRole"},
+  {"ParameterKey": "ServiceRole", "ParameterValue": "EMR_DefaultRole"}
+]
