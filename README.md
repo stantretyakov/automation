@@ -29,7 +29,9 @@ faas-cli deploy -f faas/bridge-api.yml
 ## Database Schema
 
 The `schema/postgres.sql` file contains a simple schema for managing
-multi-tenant pipelines and their runs in PostgreSQL.
+multi-tenant pipelines and their runs in PostgreSQL. It also defines
+stored procedures used by the functions to persist pipeline metadata and
+log requests.
 
 ## Notes
 

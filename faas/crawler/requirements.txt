@@ -1,1 +1,2 @@
 # Add crawler dependencies here
+psycopg2-binary
