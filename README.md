@@ -18,12 +18,23 @@ functions. This code is only a starting point for further development.
 * Location: `faas/crawler`
 * Placeholder implementation of a data crawler function.
 
+### Pipeline Creator
+
+* Location: `faas/fn-pipeline-creator`
+* Listens for new pipelines on the `registered-pipelines` topic,
+  sends them to the LLM for conversion and creates the job via LangChain.
+* Manifest: `faas/fn-pipeline-creator.yml`
+
 ## OpenFaaS Deployment
 
-Deploy both functions using the OpenFaaS CLI:
+Deploy the functions using the OpenFaaS CLI. Each function has its own
+deployment manifest under `faas/`:
 
 ```bash
 faas-cli deploy -f faas/bridge-api.yml
+faas-cli deploy -f faas/fn-core-pipeline-registrar.yml
+faas-cli deploy -f faas/bridge-llm.yml
+faas-cli deploy -f faas/fn-pipeline-creator.yml
 ```
 
 ## Configuration

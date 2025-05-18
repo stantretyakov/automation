@@ -1,0 +1,16 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  fn-pipeline-creator:
+    lang: python3
+    handler: ./faas/fn-pipeline-creator
+    image: fn-pipeline-creator:latest
+    environment:
+      write_timeout: 30s
+      read_timeout: 30s
+      KAFKA_BROKERS: "kafka:9092"
+      LLM_PROXY_URL: "http://gateway:8080/function/bridge-llm-proxy"
+      LLM_REPLY_TOPIC: "pipeline.llm"
+      EXTERNAL_LLM: "openai"
+      LANGCHAIN_URL: "http://langchain/api/pipelines"
