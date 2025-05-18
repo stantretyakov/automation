@@ -1,0 +1,25 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  bridge-llm-proxy:
+    lang: python3
+    handler: ./faas/bridge-llm-proxy
+    image: bridge-llm-proxy:latest
+    environment:
+      write_timeout: 30s
+      read_timeout: 30s
+      KAFKA_BROKER: "kafka:9092"
+      DELTA_PATH: "/tmp/delta"
+      SERVICE_ID: "bridge-llm-proxy"
+  fn-llm-openai:
+    lang: python3
+    handler: ./faas/fn-llm-openai
+    image: fn-llm-openai:latest
+    environment:
+      write_timeout: 30s
+      read_timeout: 30s
+      KAFKA_BROKER: "kafka:9092"
+      DELTA_PATH: "/tmp/delta"
+      MODEL_NAME: "gpt-4"
+      OPENAI_API_KEY: "test-key"
