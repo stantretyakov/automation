@@ -26,6 +26,23 @@ Deploy both functions using the OpenFaaS CLI:
 faas-cli deploy -f faas/bridge-api.yml
 ```
 
+## Configuration
+
+Functions read their settings from environment variables. When running
+locally, you can create an `env.json` file in the repository root containing
+key/value pairs. Values in `env.json` are merged with `os.environ` and can be
+retrieved in code via `faas.common.config.get_setting`.
+
+Example `env.json`:
+
+```json
+{
+  "KAFKA_BROKERS": "localhost:9092",
+  "PIPELINE_TOPIC": "pipelines",
+  "POSTGRES_DSN": "dbname=pipeline user=postgres password=postgres host=localhost"
+}
+```
+
 ## Database Schema
 
 The `schema/postgres.sql` file contains a simple schema for managing

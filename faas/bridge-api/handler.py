@@ -1,7 +1,7 @@
-import os
 import yaml
 from confluent_kafka import Producer
 from faas.common import db
+from faas.common.config import get_setting
 
 
 def handle(event, context):
@@ -17,12 +17,15 @@ def handle(event, context):
     except yaml.YAMLError as err:
         return f"Invalid YAML: {err}"
 
-    tenant_id = int(os.getenv("DEFAULT_TENANT_ID", "1"))
+    tenant_id = int(get_setting("DEFAULT_TENANT_ID", "1"))
     pipeline_id = db.insert_pipeline_metadata(
         tenant_id,
         pipeline.get("name", "pipeline"),
         pipeline_yaml,
     )
+
+    kafka_servers = get_setting("KAFKA_BROKERS", "kafka:9092").split(',')
+    topic = get_setting("PIPELINE_TOPIC", "pipelines")
 
     kafka_servers = os.getenv("KAFKA_BROKERS", "kafka:9092")
     topic = os.getenv("PIPELINE_TOPIC", "pipelines")
