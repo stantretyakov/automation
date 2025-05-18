@@ -1,5 +1,5 @@
 import yaml
-from kafka import KafkaProducer
+from confluent_kafka import Producer
 from faas.common import db
 from faas.common.config import get_setting
 
@@ -27,8 +27,11 @@ def handle(event, context):
     kafka_servers = get_setting("KAFKA_BROKERS", "kafka:9092").split(',')
     topic = get_setting("PIPELINE_TOPIC", "pipelines")
 
-    producer = KafkaProducer(bootstrap_servers=kafka_servers)
-    producer.send(topic, pipeline_yaml.encode("utf-8"))
+    kafka_servers = os.getenv("KAFKA_BROKERS", "kafka:9092")
+    topic = os.getenv("PIPELINE_TOPIC", "pipelines")
+
+    producer = Producer({"bootstrap.servers": kafka_servers})
+    producer.produce(topic, pipeline_yaml.encode("utf-8"))
     producer.flush()
 
     db.log_request_run(pipeline_id, "bridge-api", {"status": "accepted"})

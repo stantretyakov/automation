@@ -1,0 +1,16 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  fn-core-pipeline-registrar:
+    lang: python3
+    handler: ./faas/fn-core-pipeline-registrar
+    image: fn-core-pipeline-registrar:latest
+    environment:
+      write_timeout: 30s
+      read_timeout: 30s
+      DELTA_PATH: "/tmp/delta"
+      WORKSPACE_ID: "default"
+      TRACE_PREFIX: "trace"
+      KAFKA_BROKERS: "kafka:9092"
+      PIPELINE_TOPIC: "registered-pipelines"

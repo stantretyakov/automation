@@ -1,0 +1,5 @@
+pyyaml
+confluent-kafka
+delta-spark
+uuid
+datetime

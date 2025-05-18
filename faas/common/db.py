@@ -51,4 +51,5 @@ def log_request_run(pipeline_id, func_name, details=None):
                 "SELECT log_request_run(%s, %s, %s)",
                 (pipeline_id, func_name, details_json),
             )
-
+            conn.commit()
+    return None
