@@ -1,10 +1,10 @@
-import os
 import psycopg2
 from psycopg2 import extras
+from .config import get_setting
 
 
 def get_db_conn():
-    dsn = os.getenv(
+    dsn = get_setting(
         "POSTGRES_DSN",
         "dbname=pipeline user=postgres password=postgres host=postgres",
     )
