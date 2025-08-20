@@ -32,7 +32,7 @@ const App: React.FC = () => {
 
   if (!token) {
     return (
-      <div className="p-4">
+      <div style={{ padding: '16px' }}>
         <button onClick={() => login()}>Sign in with Google</button>
       </div>
     );
@@ -40,11 +40,21 @@ const App: React.FC = () => {
 
   return (
     <AuthContext.Provider value={{ token, signOut }}>
-      <nav className="p-2 space-x-4 border-b">
+      <nav
+        style={{
+          padding: '8px',
+          borderBottom: '1px solid #ccc',
+          display: 'flex',
+          gap: '16px',
+          alignItems: 'center'
+        }}
+      >
         <Link to="/">Dashboard</Link>
         <Link to="/clients">Clients</Link>
         <Link to="/settings">Settings</Link>
-        <button onClick={signOut} className="ml-4">Sign out</button>
+        <button onClick={signOut} style={{ marginLeft: 'auto' }}>
+          Sign out
+        </button>
       </nav>
       <Routes>
         <Route path="/" element={<Dashboard />} />
