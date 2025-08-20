@@ -1,0 +1,19 @@
+{
+  "name": "kiosk-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "echo 'No tests yet'"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@zxing/library": "^0.20.0",
+    "typescript": "^5.0.0",
+    "vite": "^4.0.0"
+  }
+}
